@@ -9,8 +9,12 @@ def choose_puzzle():
     return puzzle
 
 
-def get_guess(puzzle, win_cons):
+def get_guess():
     guess = input(" Take a guess! ")
+    return guess
+
+
+def print_puzzle(puzzle, win_cons, guess):
     for w in range(0, len(puzzle[0:])):
         if puzzle[w] == guess or puzzle[w] in win_cons:
             print(puzzle[w], end="")
@@ -18,4 +22,3 @@ def get_guess(puzzle, win_cons):
             print(" ", end="")
         else:
             print("_", end="")
-    return guess
