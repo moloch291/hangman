@@ -9,22 +9,19 @@ def choose_puzzle():
     return puzzle
 
 
-def hide_puzzle(puzzle):
-    for c in range(0, len(puzzle)):
-        if puzzle[c] == " ":
-            print(" ", end="")
-        else:
-            print("_", end="")
-    return puzzle
-
-
 def get_guesses(puzzle):
-    for i in range(0, 10):
+    win_cons = []
+    mistakes = []
+    for i in range(0, 16):
         guess = input(" Take a guess! ")
-        for w in range(0, len(puzzle)):
-            if puzzle[w] == guess:
+        for w in range(0, len(puzzle[0:])):
+            if puzzle[w] == guess or puzzle[w] in win_cons:
                 print(puzzle[w], end="")
             elif puzzle[w] == " ":
                 print(" ", end="")
             else:
                 print("_", end="")
+        if guess in puzzle:
+            win_cons.append(guess)
+        else:
+            mistakes.append(guess)
